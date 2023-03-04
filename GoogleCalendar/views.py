@@ -57,10 +57,10 @@ class GoogleCalendarEventsView(View):
 
         service = build('calendar', 'v3', credentials=credentials)
 
-        
+        timeMin = '2022-01-01T00:00:00-07:00'
 
         # Calling the Calendar API
-        events_result = service.events().list(calendarId='primary', timeMin= '2022-01-01T00:00:00-07:00',
+        events_result = service.events().list(calendarId='primary', timeMin= timeMin,
                                               maxResults=10, singleEvents=True, orderBy='startTime').execute()
         events = events_result.get('items', [])
 
